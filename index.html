@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新闻资讯</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">新闻资讯</a>
+  <div class="nav-links">
+    <a href="index.html">首页</a>
+    <a href="admin.html">后台管理</a>
+  </div>
+</nav>
+
+<main class="container">
+  <!-- 搜索和筛选 -->
+  <div class="toolbar">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="搜索新闻标题...">
+    </div>
+    <div class="filter-tabs" id="filterTabs">
+      <button class="filter-tab active" data-category="all">全部</button>
+      <button class="filter-tab" data-category="tech">科技</button>
+      <button class="filter-tab" data-category="sports">体育</button>
+      <button class="filter-tab" data-category="entertainment">娱乐</button>
+      <button class="filter-tab" data-category="business">财经</button>
+      <button class="filter-tab" data-category="world">国际</button>
+      <button class="filter-tab" data-category="science">科学</button>
+    </div>
+  </div>
+
+  <!-- 新闻列表 -->
+  <div class="news-grid" id="newsGrid">
+    <div class="empty-state">
+      <div class="icon">📭</div>
+      <h3>暂无新闻</h3>
+      <p>请前往后台管理添加新闻</p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>Powered by GitHub Pages | <a href="admin.html">后台管理</a></p>
+</footer>
+
+<!-- 详情弹窗 -->
+<div class="modal-overlay" id="modalOverlay" style="display:none;">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

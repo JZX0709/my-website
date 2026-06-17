@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>后台管理 - 新闻资讯</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">新闻资讯 · 后台管理</a>
+  <div class="nav-links">
+    <a href="index.html">📰 查看网站</a>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- GitHub 配置 -->
+  <div class="panel" style="margin-bottom:1.5rem;">
+    <div class="panel-header">🔑 GitHub 仓库配置</div>
+    <div class="panel-body">
+      <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem;">
+        通过 GitHub API 直接修改仓库中的 news.json。
+        <a href="https://github.com/settings/tokens" target="_blank" style="color:var(--primary);">获取 Token →</a>（勾选 <strong>repo</strong> 权限）
+      </p>
+      <div class="form-row" style="grid-template-columns:1fr 1fr 1fr;">
+        <div class="form-group">
+          <label>GitHub 用户名</label>
+          <input type="text" id="githubUser" placeholder="your-username">
+        </div>
+        <div class="form-group">
+          <label>仓库名</label>
+          <input type="text" id="githubRepo" placeholder="news-site">
+        </div>
+        <div class="form-group">
+          <label>分支</label>
+          <input type="text" id="githubBranch" value="main">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Personal Access Token</label>
+        <input type="password" id="githubToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="saveConfig()">💾 保存配置</button>
+        <button class="btn btn-outline" onclick="testConnection()">🔗 测试连接</button>
+      </div>
+      <p id="configStatus" style="font-size:0.8rem;margin-top:0.5rem;"></p>
+    </div>
+  </div>
+
+  <div class="admin-layout">
+    <!-- 左侧：编辑表单 -->
+    <div class="panel">
+      <div class="panel-header" id="formTitle">✏️ 添加新闻</div>
+      <div class="panel-body">
+        <form id="newsForm" onsubmit="saveNews(event)">
+          <input type="hidden" id="editId">
+          <div class="form-group">
+            <label>标题 *</label>
+            <input type="text" id="newsTitle" placeholder="请输入新闻标题" required>
+          </div>
+          <div class="form-group">
+            <label>摘要</label>
+            <textarea id="newsSummary" placeholder="新闻摘要（展示在卡片上）" rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label>正文内容</label>
+            <textarea id="newsContent" placeholder="新闻正文内容..." rows="5"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>分类</label>
+              <select id="newsCategory">
+                <option value="tech">💻 科技</option>
+                <option value="sports">⚽ 体育</option>
+                <option value="entertainment">🎬 娱乐</option>
+                <option value="business">💼 财经</option>
+                <option value="world">🌍 国际</option>
+                <option value="science">🔬 科学</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>作者</label>
+              <input type="text" id="newsAuthor" placeholder="编辑部">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>日期</label>
+              <input type="date" id="newsDate">
+            </div>
+            <div class="form-group">
+              <label>图片URL（可选）</label>
+              <input type="url" id="newsImage" placeholder="https://...">
+            </div>
+          </div>
+          <div class="checkbox-group" style="margin-bottom:1rem;">
+            <input type="checkbox" id="newsPinned">
+            <label for="newsPinned">📌 置顶该新闻</label>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary" type="submit" id="submitBtn">✅ 添加新闻</button>
+            <button class="btn btn-outline" type="button" id="cancelBtn" style="display:none;" onclick="cancelEdit()">取消编辑</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 右侧：新闻列表 -->
+    <div class="panel">
+      <div class="panel-header">
+        📋 新闻列表
+        <span class="list-count" id="listCount"></span>
+      </div>
+      <div class="panel-body" id="newsList" style="max-height:600px;overflow-y:auto;">
+        <div class="empty-state">
+          <div class="icon">📭</div>
+          <h3>暂无新闻</h3>
+          <p>使用左侧表单添加第一条新闻</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
