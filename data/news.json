@@ -10,6 +10,17 @@
       "date": "2026-06-17",
       "image": "",
       "pinned": false
+    },
+    {
+      "id": 2,
+      "title": "物理问题研究取得突破",
+      "summary": "高中物理选择性必修一",
+      "content": "太虚道长在动量守恒方面取得难题突破",
+      "category": "science",
+      "author": "太虚日报",
+      "date": "2026-06-17",
+      "image": "https://pic2.zhimg.com/v2-9e07713702073662268a31da95cb02c9_r.jpg",
+      "pinned": false
     }
   ]
 }
