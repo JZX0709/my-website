@@ -1,3 +1,15 @@
 {
-  "news": []
+  "news": [
+    {
+      "id": 1,
+      "title": "测试",
+      "summary": "测试",
+      "content": "测试",
+      "category": "tech",
+      "author": "测试",
+      "date": "2026-06-17",
+      "image": "",
+      "pinned": false
+    }
+  ]
 }
